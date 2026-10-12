@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockFlow Enterprise | Gestión Inteligente de Inventario</title>
+  <meta name="description"
+    content="Plataforma SaaS moderna para el control de inventario, valoración financiera de stock y analítica de productos en tiempo real.">
+
+  <!-- Tipografías de Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body class="theme-dark">
+  <!-- Layout Principal de la Aplicación SaaS -->
+  <div class="app-layout">
+
+    <!-- Backdrop para dispositivos móviles al abrir el sidebar -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Barra Lateral (Sidebar) Moderna SaaS -->
+    <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+      <!-- Encabezado de Marca -->
+      <div class="brand-container">
+        <a href="#dashboard" class="brand-link" id="brand-link">
+          <div class="brand-icon-wrapper" aria-hidden="true">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span class="brand-sparkle"></span>
+          </div>
+          <div class="brand-info">
+            <div class="brand-title">Stock<span class="brand-accent">Flow</span></div>
+            <span class="brand-tag">SaaS Enterprise</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" id="btn-toggle-sidebar" aria-label="Contraer barra lateral"
+          title="Contraer menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menú de Navegación por Módulos -->
+      <nav class="sidebar-nav" aria-label="Módulos del sistema">
+        <div class="nav-section-label">PANEL PRINCIPAL</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link active" id="nav-dashboard" data-section="dashboard">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="9" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="5" rx="1.5"></rect>
+                <rect x="14" y="12" width="7" height="9" rx="1.5"></rect>
+                <rect x="3" y="16" width="7" height="5" rx="1.5"></rect>
+              </svg>
+              <span class="nav-text">Dashboard</span>
+              <span class="nav-indicator"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="nav-inventario" data-section="inventario">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span class="nav-text">Inventario</span>
+              <span class="nav-counter" id="nav-product-counter">0</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="nav-movimientos" data-section="movimientos">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="17 1 21 5 17 9"></polyline>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                <polyline points="7 23 3 19 7 15"></polyline>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+              </svg>
+              <span class="nav-text">Movimientos</span>
+              <span class="nav-pill-badge" id="nav-movements-badge">En vivo</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="nav-reportes" data-section="reportes">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              <span class="nav-text">Métricas & Reportes</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">DESARROLLO & API</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" id="nav-sistema" data-section="sistema">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                </path>
+              </svg>
+              <span class="nav-text">Sistema & API</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a href="/docs" target="_blank" rel="noopener noreferrer" class="nav-link external-link" id="nav-docs"
+              title="Abrir Swagger UI">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span class="nav-text">Swagger UI</span>
+              <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Pie de Barra Lateral: Estado y Perfil -->
+      <div class="sidebar-footer">
+        <div class="system-status-card">
+          <div class="status-indicator-ping">
+            <span class="ping-circle ping-animate"></span>
+            <span class="ping-circle"></span>
+          </div>
+          <div class="status-meta">
+            <span class="status-title">FastAPI Backend</span>
+            <span class="status-subtitle" id="server-ping-text">Conectado (Puerto 8000)</span>
+          </div>
+        </div>
+        <div class="user-profile-badge">
+          <div class="user-avatar-initials">AD</div>
+          <div class="user-details">
+            <span class="user-name">Admin Inventario</span>
+            <span class="user-role">Superusuario</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Contenedor Principal de Vistas -->
+    <div class="main-wrapper">
+
+      <!-- Barra Superior Global (Header) -->
+      <header class="top-header" id="top-header">
+        <div class="top-header-left">
+          <button class="mobile-menu-btn" id="btn-mobile-menu" aria-label="Abrir menú de navegación">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="22" height="22">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div class="header-breadcrumbs">
+            <span class="crumb-root">StockFlow</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current" id="header-breadcrumb-current">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="top-header-search">
+          <div class="header-search-box">
+            <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search-input" placeholder="Buscar por producto, ID o estado... (Ctrl + K)"
+              aria-label="Búsqueda global">
+            <span class="search-kbd-shortcut">⌘K</span>
+          </div>
+        </div>
+
+        <div class="top-header-actions">
+          <!-- Valor de Inventario Flotante -->
+          <div class="inventory-quick-stat" id="header-inventory-value-pill" title="Valor total del inventario">
+            <span class="quick-stat-label">Valor Activo:</span>
+            <span class="quick-stat-val" id="stat-valor-total-header">$0.00</span>
+          </div>
+
+          <!-- Botón de Notificaciones con Alertas de Stock Bajo -->
+          <div class="notifications-dropdown-wrapper">
+            <button class="icon-button" id="btn-notifications" aria-label="Ver alertas de inventario"
+              title="Alertas de inventario">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-badge" id="notification-badge-count" style="display: none;">0</span>
+            </button>
+            <!-- Panel flotante de notificaciones -->
+            <div class="notifications-popover" id="notifications-popover" style="display: none;">
+              <div class="popover-header">
+                <h4>Alertas de Stock</h4>
+                <span class="popover-badge" id="popover-alert-count">0 alertas</span>
+              </div>
+              <div class="popover-content" id="notifications-list">
+                <div class="popover-empty">No hay alertas de stock bajo pendientes.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón Acción Primaria Global: Nuevo Producto -->
+          <button class="btn btn-primary btn-header-cta" id="btn-abrir-crear" aria-label="Crear nuevo producto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>+ Nuevo Producto</span>
+          </button>
+
+          <!-- Perfil de Usuario Superior (Dark Premium SaaS) -->
+          <div class="user-profile-dropdown-wrapper" id="user-profile-wrapper">
+            <button class="user-profile-btn" id="btn-user-profile" aria-expanded="false" aria-haspopup="true"
+              aria-label="Menú de perfil de usuario">
+              <div class="user-avatar-circle" aria-hidden="true">
+                <span class="avatar-initials">AD</span>
+                <span class="avatar-status-dot" title="Estado: Conectado"></span>
+              </div>
+              <div class="user-profile-info">
+                <span class="user-profile-name">Admin Inventario</span>
+                <span class="user-profile-role">Administrador</span>
+              </div>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                width="14" height="14">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Menú Desplegable de Perfil -->
+            <div class="user-dropdown-menu" id="user-dropdown-menu" role="menu" aria-label="Opciones de perfil"
+              style="display: none;">
+              <div class="dropdown-user-header">
+                <div class="dropdown-user-avatar">AD</div>
+                <div class="dropdown-user-meta">
+                  <strong class="dropdown-user-name">Admin Inventario</strong>
+                  <span class="dropdown-user-email">admin@stockflow.dev</span>
+                  <span class="dropdown-user-role-badge">
+                    <span class="badge-role-dot"></span> Administrador
+                  </span>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <ul class="dropdown-menu-list">
+                <li>
+                  <button class="dropdown-menu-item" id="menu-item-profile" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="menu-item-text">Mi Perfil</span>
+                    <span class="demo-tag">Demo</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-menu-item" id="menu-item-settings" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                      </path>
+                    </svg>
+                    <span class="menu-item-text">Configuración</span>
+                    <span class="demo-tag">Demo</span>
+                  </button>
+                </li>
+                <li>
+                  <a href="/docs" target="_blank" rel="noopener noreferrer" class="dropdown-menu-item" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <span class="menu-item-text">Swagger API Docs</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"
+                      class="external-indicator">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-menu-footer">
+                <button class="dropdown-menu-item menu-item-logout" id="menu-item-logout" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                  <span class="menu-item-text">Cerrar Sesión</span>
+                  <span class="demo-tag">Demo</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banner de Error de Conexión Global (Si falla el backend) -->
+      <div class="error-banner" id="error-banner" style="display: none;" role="alert">
+        <div class="error-banner-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="error-banner-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="error-banner-text">
+          <strong>Error de comunicación con la API REST</strong>
+          <p id="error-banner-msg">No se pudo contactar con el backend FastAPI en http://127.0.0.1:8000.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-reintentar"
+          aria-label="Reintentar conexión">Reintentar</button>
+      </div>
+
+      <!-- Contenido Principal -->
+      <main class="main-content" id="main-content">
+
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 1: DASHBOARD SAAS (VISTA GENERAL CON KPIS Y GRÁFICOS)   -->
+        <!-- ============================================================== -->
+        <section class="spa-view active" id="view-dashboard" aria-label="Dashboard general">
+          <!-- Hero de Bienvenida -->
+          <div class="dashboard-hero">
+            <div class="hero-text-block">
+              <div class="hero-badge">
+                <span class="badge-dot pulse"></span>
+                <span>Monitoreo en Tiempo Real</span>
+              </div>
+              <h1 class="hero-title">Panel de Control de Inventario</h1>
+              <p class="hero-description">
+                Supervisa niveles de existencias, valor monetario del almacén y alertas críticas en una sola vista
+                centralizada.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-secondary btn-sm" id="btn-refresh-dashboard" title="Refrescar métricas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                <span>Sincronizar</span>
+              </button>
+              <button class="btn btn-primary btn-sm" id="btn-quick-adjust-hero">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                </svg>
+                <span>Ajuste Rápido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- GRID DE TARJETAS DE KPIS PRINCIPALES -->
+          <div class="stats-section" id="estadisticas" aria-label="Tarjetas de estadísticas">
+            <!-- 1. Stock Total -->
+            <div class="stat-card stat-card-indigo" id="card-stock-total">
+              <div class="stat-card-top">
+                <div class="stat-icon-wrap stat-icon-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <span class="stat-trend-chip positive">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                  <span>Unidades</span>
+                </span>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Stock Total Acumulado</span>
+                <span class="stat-value" id="stat-stock-total">0</span>
+              </div>
+              <div class="stat-footer-text">
+                <span id="stat-stock-subtitle">Total de piezas disponibles en bodega</span>
+              </div>
+            </div>
+
+            <!-- 2. Valor Total del Inventario -->
+            <div class="stat-card stat-card-emerald" id="card-valor-total">
+              <div class="stat-card-top">
+                <div class="stat-icon-wrap stat-icon-emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                </div>
+                <span class="stat-trend-chip neutral">
+                  <span>Valor en libros</span>
+                </span>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Valor del Inventario</span>
+                <span class="stat-value" id="stat-valor-total">$0.00</span>
+              </div>
+              <div class="stat-footer-text">
+                <span>Cálculo directo: Sumatoria (Precio × Stock)</span>
+              </div>
+            </div>
+
+            <!-- 3. Precio Promedio -->
+            <div class="stat-card stat-card-teal" id="card-precio-promedio">
+              <div class="stat-card-top">
+                <div class="stat-icon-wrap stat-icon-teal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                </div>
+                <span class="stat-trend-chip neutral">
+                  <span>Promedio</span>
+                </span>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Precio Promedio Unitario</span>
+                <span class="stat-value" id="stat-precio-promedio">$0.00</span>
+              </div>
+              <div class="stat-footer-text">
+                <span id="stat-precio-rango-text">Min: <strong id="stat-precio-minimo">$0.00</strong> | Max: <strong
+                    id="stat-precio-maximo">$0.00</strong></span>
+              </div>
+            </div>
+
+            <!-- 4. Salud de Stock & Alertas Críticas -->
+            <div class="stat-card stat-card-amber" id="card-alertas-stock">
+              <div class="stat-card-top">
+                <div class="stat-icon-wrap stat-icon-amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                    </path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <span class="stat-trend-chip warning" id="stat-chip-atencion">
+                  <span>Requiere atención</span>
+                </span>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Alertas de Stock Bajo</span>
+                <span class="stat-value text-amber" id="stat-alertas-total">0</span>
+              </div>
+              <div class="stat-footer-text">
+                <span>Productos con existencias menores a 10 unidades</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECCIÓN DE GRÁFICOS Y ANALÍTICA MODERNA -->
+          <div class="analytics-grid">
+            <!-- Gráfico 1: Salud del Inventario (Donut Chart SVG) -->
+            <div class="analytics-card">
+              <div class="card-header-clean">
+                <div>
+                  <h3 class="card-title-clean">Salud del Inventario</h3>
+                  <p class="card-subtitle-clean">Distribución según umbral de existencia operativa</p>
+                </div>
+                <div class="card-badge-pill" id="badge-total-items-donut">0 productos</div>
+              </div>
+
+              <div class="donut-chart-container">
+                <div class="donut-svg-wrapper">
+                  <svg class="donut-svg" viewBox="0 0 160 160" id="donut-svg">
+                    <circle cx="80" cy="80" r="62" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="18">
+                    </circle>
+                    <circle class="donut-segment donut-seg-stock" id="donut-seg-stock" cx="80" cy="80" r="62"
+                      fill="none" stroke="#10B981" stroke-width="18" stroke-dasharray="0 400" stroke-dashoffset="0">
+                    </circle>
+                    <circle class="donut-segment donut-seg-low" id="donut-seg-low" cx="80" cy="80" r="62" fill="none"
+                      stroke="#F59E0B" stroke-width="18" stroke-dasharray="0 400" stroke-dashoffset="0"></circle>
+                    <circle class="donut-segment donut-seg-out" id="donut-seg-out" cx="80" cy="80" r="62" fill="none"
+                      stroke="#EF4444" stroke-width="18" stroke-dasharray="0 400" stroke-dashoffset="0"></circle>
+                  </svg>
+                  <div class="donut-center-info">
+                    <span class="donut-percentage" id="donut-percentage-val">100%</span>
+                    <span class="donut-sublabel">Operativo</span>
+                  </div>
+                </div>
+
+                <div class="donut-legend">
+                  <div class="legend-item">
+                    <span class="legend-color-dot dot-emerald"></span>
+                    <div class="legend-text">
+                      <span class="legend-title">En Stock (≥10 u.)</span>
+                      <strong class="legend-val" id="legend-stock-count">0</strong>
+                    </div>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color-dot dot-amber"></span>
+                    <div class="legend-text">
+                      <span class="legend-title">Stock Bajo (&lt;10 u.)</span>
+                      <strong class="legend-val" id="legend-low-count">0</strong>
+                    </div>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color-dot dot-rose"></span>
+                    <div class="legend-text">
+                      <span class="legend-title">Agotados (0 u.)</span>
+                      <strong class="legend-val" id="legend-out-count">0</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gráfico 2: Top Productos por Inversión de Capital (Barras SVG dinámicas) -->
+            <div class="analytics-card">
+              <div class="card-header-clean">
+                <div>
+                  <h3 class="card-title-clean">Mayor Valor en Almacén</h3>
+                  <p class="card-subtitle-clean">Productos con mayor capital monetario inmovilizado</p>
+                </div>
+                <button class="btn-text-action" id="btn-ver-todos-reportes">Ver reporte completo →</button>
+              </div>
+
+              <div class="bars-chart-container" id="top-products-bar-chart">
+                <!-- Se inyecta dinámicamente vía JavaScript -->
+                <div class="chart-skeleton">
+                  <div class="skeleton-line" style="width: 80%"></div>
+                  <div class="skeleton-line" style="width: 60%"></div>
+                  <div class="skeleton-line" style="width: 45%"></div>
+                  <div class="skeleton-line" style="width: 30%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRID DE SEGUNDO NIVEL: ALERTAS Y MOVIMIENTOS RECIENTES -->
+          <div class="dashboard-bottom-grid">
+            <!-- Panel de Alertas de Reposición Inmediata -->
+            <div class="analytics-card">
+              <div class="card-header-clean">
+                <div class="header-with-icon">
+                  <div class="header-icon-danger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                      <path
+                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="card-title-clean">Reposición Prioritaria</h3>
+                    <p class="card-subtitle-clean">Productos en umbral crítico que requieren pedido urgente</p>
+                  </div>
+                </div>
+                <button class="btn-secondary btn-sm" id="btn-reabastecer-primer-critico">Atender Alertas</button>
+              </div>
+
+              <div class="critical-items-list" id="critical-items-list">
+                <!-- Lista de productos críticos inyectada vía JS -->
+              </div>
+            </div>
+
+            <!-- Panel de Actividad Reciente / Movimientos -->
+            <div class="analytics-card">
+              <div class="card-header-clean">
+                <div>
+                  <h3 class="card-title-clean">Actividad del Inventario</h3>
+                  <p class="card-subtitle-clean">Bitácora reactiva de ingresos, egresos y modificaciones</p>
+                </div>
+                <button class="btn-text-action" id="btn-ver-todos-movimientos">Historial completo →</button>
+              </div>
+
+              <div class="activity-timeline" id="recent-activity-timeline">
+                <!-- Items de actividad inyectados por JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 2: INVENTARIO & CATÁLOGO COMPLETO DE PRODUCTOS         -->
+        <!-- ============================================================== -->
+        <section class="spa-view" id="view-inventario" aria-label="Gestión de catálogo de productos">
+
+          <!-- Encabezado de la Sección Inventario -->
+          <header class="section-page-header">
+            <div class="header-titles">
+              <h2 class="page-title">Catálogo de Productos</h2>
+              <p class="page-subtitle">Gestiona referencias, ajusta precios en tiempo real y controla el stock físico.
+              </p>
+            </div>
+            <div class="section-header-actions">
+              <button class="btn btn-secondary" id="btn-export-csv" title="Descargar como archivo CSV">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Exportar CSV</span>
+              </button>
+              <button class="btn btn-primary" id="btn-abrir-crear-catalog">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Nuevo Producto</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- Tarjeta Contenedora Principal del Listado -->
+          <div class="table-card">
+
+            <!-- Barra de Filtros, Búsqueda y Ordenamiento SaaS -->
+            <div class="table-card-toolbar">
+              <!-- Pestañas de Filtrado por Estado (Pills) -->
+              <div class="filter-pills" role="tablist" aria-label="Filtrar por estado">
+                <button class="filter-pill active" data-filter="todos" role="tab" aria-selected="true">
+                  <span>Todos</span>
+                  <span class="pill-counter" id="pill-count-todos">0</span>
+                </button>
+                <button class="filter-pill" data-filter="en-stock" role="tab" aria-selected="false">
+                  <span class="pill-dot dot-emerald"></span>
+                  <span>En stock</span>
+                  <span class="pill-counter" id="pill-count-en-stock">0</span>
+                </button>
+                <button class="filter-pill" data-filter="stock-bajo" role="tab" aria-selected="false">
+                  <span class="pill-dot dot-amber"></span>
+                  <span>Stock bajo</span>
+                  <span class="pill-counter" id="pill-count-stock-bajo">0</span>
+                </button>
+                <button class="filter-pill" data-filter="agotados" role="tab" aria-selected="false">
+                  <span class="pill-dot dot-rose"></span>
+                  <span>Agotados</span>
+                  <span class="pill-counter" id="pill-count-agotados">0</span>
+                </button>
+              </div>
+
+              <!-- Controles de Búsqueda y Herramientas -->
+              <div class="toolbar-controls">
+                <!-- Buscador de Texto con Limpieza Rápida -->
+                <div class="search-input-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="filtro-busqueda" placeholder="Buscar por nombre o ID..."
+                    aria-label="Buscar producto por nombre">
+                  <button type="button" class="btn-clear-search" id="btn-clear-search" style="display: none;"
+                    aria-label="Limpiar búsqueda">&times;</button>
+                </div>
+
+                <!-- Selector de Ordenamiento -->
+                <div class="select-sort-wrapper">
+                  <select id="select-ordenar" class="form-select-sm" aria-label="Ordenar productos">
+                    <option value="id-asc">ID (Ascendente)</option>
+                    <option value="id-desc">ID (Descendente)</option>
+                    <option value="nombre-asc">Nombre (A - Z)</option>
+                    <option value="nombre-desc">Nombre (Z - A)</option>
+                    <option value="stock-desc">Mayor Stock</option>
+                    <option value="stock-asc">Menor Stock</option>
+                    <option value="precio-desc">Mayor Precio</option>
+                    <option value="precio-asc">Menor Precio</option>
+                  </select>
+                </div>
+
+                <!-- Botón Recargar / Refrescar Datos -->
+                <button class="btn btn-secondary btn-icon-only" id="btn-recargar"
+                  aria-label="Recargar lista de productos" title="Recargar catálogo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Resumen de Resultados y Paginación Superior -->
+            <div class="table-meta-bar">
+              <span class="table-results-label">
+                Mostrando <strong id="results-range-text">0 de 0</strong> productos
+                <span class="table-count-badge" id="product-count-badge">0 productos</span>
+              </span>
+              <div class="page-size-selector">
+                <label for="select-page-size">Por página:</label>
+                <select id="select-page-size" class="form-select-xs">
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="100">Todos</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Estado de Carga (Skeleton Loader) -->
+            <div class="loading-state" id="loading-state" style="display: none;">
+              <div class="spinner"></div>
+              <p>Sincronizando inventario con la base de datos...</p>
+            </div>
+
+            <!-- Vista de Tabla (Escritorio y Pantallas Grandes) -->
+            <div class="table-responsive" id="table-container">
+              <table class="products-table" id="tabla-productos">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-sortable" data-sort="nombre">
+                      <span>Producto</span>
+                      <span class="sort-indicator"></span>
+                    </th>
+                    <th scope="col" class="th-sortable" data-sort="id">
+                      <span>Código ID</span>
+                      <span class="sort-indicator"></span>
+                    </th>
+                    <th scope="col" class="th-sortable" data-sort="precio">
+                      <span>Precio Unitario</span>
+                      <span class="sort-indicator"></span>
+                    </th>
+                    <th scope="col" class="th-sortable" data-sort="stock">
+                      <span>Disponibilidad (Stock)</span>
+                      <span class="sort-indicator"></span>
+                    </th>
+                    <th scope="col">
+                      <span>Valor en Bodega</span>
+                    </th>
+                    <th scope="col">
+                      <span>Estado</span>
+                    </th>
+                    <th scope="col" class="th-actions">Acciones Rápidas</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-productos-body">
+                  <!-- Inyectado dinámicamente vía app.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Vista de Tarjetas para Dispositivos Móviles / Pantallas Pequeñas (< 768px) -->
+            <div class="cards-responsive" id="cards-container">
+              <!-- Inyectado dinámicamente vía app.js -->
+            </div>
+
+            <!-- Estado Vacío (Empty State) -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+              <div class="empty-state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                  <line x1="3.27" y1="6.96" x2="12" y2="12.01"></line>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <h3>No se encontraron productos</h3>
+              <p id="empty-state-msg">Comienza agregando tu primer producto al inventario o modifica los términos de
+                búsqueda.</p>
+              <button class="btn btn-primary btn-sm" id="btn-empty-crear">+ Crear Producto Ahora</button>
+            </div>
+
+            <!-- Barra de Paginación Inferior -->
+            <div class="table-pagination-footer" id="pagination-footer">
+              <div class="pagination-info">
+                Página <span id="current-page-num">1</span> de <span id="total-pages-num">1</span>
+              </div>
+              <div class="pagination-buttons" id="pagination-buttons">
+                <!-- Botones numerados inyectados por JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 3: MOVIMIENTOS & AJUSTES RÁPIDOS DE ENTRADAS / SALIDAS  -->
+        <!-- ============================================================== -->
+        <section class="spa-view" id="view-movimientos" aria-label="Historial y registro de movimientos de stock">
+          <header class="section-page-header">
+            <div class="header-titles">
+              <h2 class="page-title">Movimientos de Inventario</h2>
+              <p class="page-subtitle">Control de auditoría para entradas (reabastecimiento) y salidas (ventas o
+                mermas).</p>
+            </div>
+            <div class="section-header-actions">
+              <button class="btn btn-primary" id="btn-abrir-ajuste-stock">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                </svg>
+                <span>Registrar Entrada / Salida</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- Tarjetas de Resumen de Movimientos -->
+          <div class="movements-summary-grid">
+            <div class="summary-mini-card">
+              <span class="mini-card-label">Total Entradas Registradas</span>
+              <div class="mini-card-value text-emerald" id="movements-total-in">+0 u.</div>
+            </div>
+            <div class="summary-mini-card">
+              <span class="mini-card-label">Total Salidas Registradas</span>
+              <div class="mini-card-value text-rose" id="movements-total-out">-0 u.</div>
+            </div>
+            <div class="summary-mini-card">
+              <span class="mini-card-label">Operaciones en Bitácora</span>
+              <div class="mini-card-value text-indigo" id="movements-total-ops">0</div>
+            </div>
+          </div>
+
+          <!-- Tabla de Historial de Movimientos -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-titles">
+                <h3 class="table-card-title">Auditoría de Operaciones</h3>
+                <span class="table-count-badge">Sesión Activa</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-limpiar-historial-mov">Limpiar Bitácora</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="products-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Fecha / Hora</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Tipo de Operación</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Stock Resultante</th>
+                    <th scope="col">Motivo / Concepto</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-movimientos-body">
+                  <!-- Inyectado dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="empty-state" id="empty-movements-state" style="display: none;">
+              <p>Aún no se han registrado ajustes de inventario en esta sesión.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 4: MÉTRICAS FINANCIERAS & REPORTES                      -->
+        <!-- ============================================================== -->
+        <section class="spa-view" id="view-reportes" aria-label="Reportes financieros y análisis de stock">
+          <header class="section-page-header">
+            <div class="header-titles">
+              <h2 class="page-title">Métricas & Reportes Financieros</h2>
+              <p class="page-subtitle">Valoración económica de la mercancía y análisis ABC del catálogo.</p>
+            </div>
+            <div class="section-header-actions">
+              <button class="btn btn-secondary" id="btn-export-reports-json">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>Descargar JSON</span>
+              </button>
+              <button class="btn btn-primary" id="btn-print-report">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Imprimir / PDF</span>
+              </button>
+            </div>
+          </header>
+
+          <div class="reports-summary-cards">
+            <div class="report-box">
+              <span class="report-box-title">Capital Total Invertido</span>
+              <span class="report-box-val" id="report-total-invested">$0.00</span>
+              <span class="report-box-foot">Cálculo al costo actual</span>
+            </div>
+            <div class="report-box">
+              <span class="report-box-title">Producto de Mayor Valor</span>
+              <span class="report-box-val" id="report-top-item-name">-</span>
+              <span class="report-box-foot" id="report-top-item-val">$0.00</span>
+            </div>
+            <div class="report-box">
+              <span class="report-box-title">Índice de Disponibilidad</span>
+              <span class="report-box-val text-emerald" id="report-availability-rate">100%</span>
+              <span class="report-box-foot">Productos sin quiebre de stock</span>
+            </div>
+          </div>
+
+          <!-- Tabla de Análisis de Valoración ABC -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-titles">
+                <h3 class="table-card-title">Desglose Financiero por Producto</h3>
+                <span class="table-count-badge">Valoración al 100%</span>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="products-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio Unitario</th>
+                    <th scope="col">Stock Disponible</th>
+                    <th scope="col">Valor Total ($)</th>
+                    <th scope="col">Participación en Almacén (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-reportes-body">
+                  <!-- Inyectado dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 5: INFORMACIÓN DEL SISTEMA & API REST                  -->
+        <!-- ============================================================== -->
+        <section class="spa-view" id="view-sistema" aria-label="Información del sistema y servicios API">
+          <header class="section-page-header">
+            <div class="header-titles">
+              <h2 class="page-title">Sistema & Estado de la Plataforma</h2>
+              <p class="page-subtitle">Información técnica de arquitectura, conexión a base de datos y endpoints REST.
+              </p>
+            </div>
+          </header>
+
+          <div class="system-cards-grid">
+            <!-- Tarjeta 1: Especificaciones del Backend -->
+            <div class="analytics-card">
+              <h3 class="card-title-clean">Arquitectura de Servidor</h3>
+              <div class="tech-spec-list">
+                <div class="tech-spec-row">
+                  <span class="tech-key">Framework Web:</span>
+                  <span class="tech-val"><span class="badge-tech">FastAPI 0.111+</span> con Uvicorn</span>
+                </div>
+                <div class="tech-spec-row">
+                  <span class="tech-key">Motor de Base de Datos:</span>
+                  <span class="tech-val"><span class="badge-tech">SQLite Local</span> con SQLAlchemy 2.x</span>
+                </div>
+                <div class="tech-spec-row">
+                  <span class="tech-key">Serialización / Contratos:</span>
+                  <span class="tech-val"><span class="badge-tech">Pydantic v2</span> con validación estricta</span>
+                </div>
+                <div class="tech-spec-row">
+                  <span class="tech-key">Arquitectura:</span>
+                  <span class="tech-val">Modular con separación de capas (Routes / Services / Models)</span>
+                </div>
+                <div class="tech-spec-row">
+                  <span class="tech-key">Estado del Servidor:</span>
+                  <span class="tech-val text-emerald">● Operativo y escuchando en http://127.0.0.1:8000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tarjeta 2: Documentación Interactiva -->
+            <div class="analytics-card">
+              <h3 class="card-title-clean">Documentación Interactiva de la API</h3>
+              <p class="card-subtitle-clean">Prueba directamente los endpoints HTTP y revisa los esquemas OpenAPI.</p>
+
+              <div class="docs-links-stack">
+                <a href="/docs" target="_blank" class="doc-card-link">
+                  <div class="doc-icon doc-icon-swagger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                      <polyline points="2 17 12 22 22 17"></polyline>
+                      <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="doc-link-info">
+                    <strong>Swagger UI (/docs)</strong>
+                    <span>Interfaz interactiva para consultar y ejecutar endpoints en vivo.</span>
+                  </div>
+                  <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="/redoc" target="_blank" class="doc-card-link">
+                  <div class="doc-icon doc-icon-redoc">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                  </div>
+                  <div class="doc-link-info">
+                    <strong>ReDoc (/redoc)</strong>
+                    <span>Documentación técnica formal de especificación OpenAPI.</span>
+                  </div>
+                  <span class="doc-arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Botón Móvil Inferior Flotante -->
+      <div class="mobile-bottom-bar">
+        <button class="btn btn-primary btn-block-mobile" id="btn-abrir-crear-mobile"
+          aria-label="Crear nuevo producto en móvil">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>+ Nuevo Producto</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CREAR / EDITAR PRODUCTO (MODERNO SAAS)                  -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-producto" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-titulo">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-header-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path
+              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+            </path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-titulo">Nuevo producto</h2>
+          <span class="modal-subtitle">Ingresa la información para persistirla en el inventario.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-modal" aria-label="Cerrar ventana emergente">&times;</button>
+      </div>
+
+      <form id="form-producto" novalidate>
+        <input type="hidden" id="producto-id" value="">
+
+        <div class="modal-body">
+          <!-- Campo: Nombre -->
+          <div class="form-group">
+            <label for="campo-nombre" class="form-label">
+              Nombre del producto <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <input type="text" id="campo-nombre" name="nombre" class="form-control pl-icon"
+                placeholder="Ej. Arroz Grano Largo 1 kg" required maxlength="100" autocomplete="off"
+                aria-describedby="error-nombre">
+            </div>
+            <div class="field-meta-row">
+              <span class="field-error" id="error-nombre" aria-live="polite"></span>
+              <span class="char-count" id="char-count-nombre">0 / 100</span>
+            </div>
+          </div>
+
+          <!-- Fila de dos columnas: Precio y Stock -->
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label for="campo-precio" class="form-label">
+                Precio Unitario (USD) <span class="required">*</span>
+              </label>
+              <div class="input-prefix-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="campo-precio" name="precio" class="form-control pl-prefix" placeholder="0.00"
+                  step="0.01" min="0.01" required aria-describedby="error-precio">
+              </div>
+              <span class="field-error" id="error-precio" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group col-half">
+              <label for="campo-stock" class="form-label">
+                Stock Inicial <span class="required">*</span>
+              </label>
+              <div class="stock-input-wrapper">
+                <input type="number" id="campo-stock" name="stock" class="form-control" placeholder="0" min="0" step="1"
+                  required aria-describedby="error-stock">
+              </div>
+              <span class="field-error" id="error-stock" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <!-- Vista Previa Dinámica del Producto -->
+          <div class="product-preview-card" id="modal-product-preview">
+            <div class="preview-badge-row">
+              <span class="preview-label">PREVISUALIZACIÓN EN TIEMPO REAL:</span>
+              <span class="badge badge-stock" id="preview-badge-status">
+                <span class="badge-dot"></span>
+                <span id="preview-badge-text">En stock</span>
+              </span>
+            </div>
+            <div class="preview-body">
+              <span class="preview-name" id="preview-product-name">Nombre del producto...</span>
+              <div class="preview-values">
+                <span>Precio: <strong id="preview-product-price">$0.00</strong></span>
+                <span>•</span>
+                <span>Stock: <strong id="preview-product-stock">0 u.</strong></span>
+                <span>•</span>
+                <span>Valor Total: <strong id="preview-product-total" class="text-emerald">$0.00</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tip informativo -->
+          <div class="form-info-tip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tip-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Regla de negocio: Los productos con stock &lt; 10 unidades se categorizan automáticamente como "Stock
+              bajo".</span>
+          </div>
+
+          <!-- Error general de API en el modal -->
+          <div class="modal-error-banner" id="modal-error-general" style="display: none;" role="alert"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-modal"
+            aria-label="Cancelar y cerrar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-guardar-producto" aria-label="Guardar producto">
+            <span class="btn-spinner" id="guardar-spinner" style="display: none;"></span>
+            <span id="btn-guardar-texto">Guardar producto</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: AJUSTE RÁPIDO DE STOCK (ENTRADA / SALIDA)               -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-ajuste-stock" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-ajuste-titulo">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <div class="modal-header-icon-box header-icon-indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <polyline points="17 1 21 5 17 9"></polyline>
+            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+            <polyline points="7 23 3 19 7 15"></polyline>
+            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-ajuste-titulo">Ajuste Rápido de Stock</h2>
+          <span class="modal-subtitle">Registra entrada o salida física de mercancía.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-ajuste" aria-label="Cerrar ventana">&times;</button>
+      </div>
+
+      <form id="form-ajuste-stock" novalidate>
+        <input type="hidden" id="ajuste-producto-id" value="">
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ajuste-select-producto" class="form-label">Seleccionar Producto <span
+                class="required">*</span></label>
+            <select id="ajuste-select-producto" class="form-control" required>
+              <!-- Opciones inyectadas por JS -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tipo de Movimiento <span class="required">*</span></label>
+            <div class="movement-type-selector">
+              <label class="movement-radio-label active" id="label-tipo-in">
+                <input type="radio" name="tipo_movimiento" value="entrada" checked>
+                <div class="radio-content text-emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  <span>Entrada / Reabastecimiento</span>
+                </div>
+              </label>
+              <label class="movement-radio-label" id="label-tipo-out">
+                <input type="radio" name="tipo_movimiento" value="salida">
+                <div class="radio-content text-rose">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  <span>Salida / Despacho</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label for="ajuste-cantidad" class="form-label">Cantidad <span class="required">*</span></label>
+              <input type="number" id="ajuste-cantidad" class="form-control" min="1" step="1" value="10" required>
+            </div>
+            <div class="form-group col-half">
+              <label class="form-label">Stock Proyectado</label>
+              <div class="projected-stock-display">
+                <span id="ajuste-stock-actual">0</span>
+                <span>→</span>
+                <strong id="ajuste-stock-nuevo" class="text-indigo">0 u.</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ajuste-motivo" class="form-label">Concepto / Motivo</label>
+            <input type="text" id="ajuste-motivo" class="form-control"
+              placeholder="Ej. Factura compra #1042 o Venta directa" maxlength="80">
+          </div>
+
+          <div class="modal-error-banner" id="modal-ajuste-error" style="display: none;" role="alert"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-ajuste">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-confirmar-ajuste">
+            <span class="btn-spinner" id="ajuste-spinner" style="display: none;"></span>
+            <span>Aplicar Movimiento</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CONFIRMACIÓN DE ELIMINACIÓN DE PRODUCTO                 -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-eliminar" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-eliminar-titulo">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header modal-header-danger">
+        <div class="danger-icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-eliminar-titulo">¿Eliminar producto?</h2>
+          <span class="modal-subtitle">Esta acción eliminará el registro de la base de datos.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-eliminar" aria-label="Cerrar diálogo">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-confirm-desc">
+          ¿Estás seguro de que deseas eliminar permanentemente <strong id="nombre-producto-eliminar">este
+            producto</strong>? Los datos asociados y métricas se actualizarán de inmediato.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancelar-eliminar"
+          aria-label="Cancelar eliminación">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btn-confirmar-eliminar"
+          aria-label="Confirmar eliminación permanente">
+          <span class="btn-spinner" id="eliminar-spinner" style="display: none;"></span>
+          <span>Sí, eliminar producto</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- CONTENEDOR FLOTANTE DE NOTIFICACIONES TOAST                    -->
+  <!-- ============================================================== -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Script Principal de la Aplicación -->
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
