@@ -16,7 +16,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.database import Base, engine, SessionLocal
-from app.routes import productos, estadisticas
+from app.routes import productos, estadisticas, sistema
 from app.services import producto_service
 
 
@@ -94,6 +94,7 @@ async def validation_exception_handler(
 # Registro de routers bajo el prefijo /api/v1
 app.include_router(productos.router, prefix="/api/v1")
 app.include_router(estadisticas.router, prefix="/api/v1")
+app.include_router(sistema.router, prefix="/api/v1")
 
 # Ruta absoluta al directorio de archivos estáticos
 STATIC_DIR = Path(__file__).resolve().parent.parent / "static"

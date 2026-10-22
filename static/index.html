@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StockFlow Enterprise | Gestión Inteligente de Inventario</title>
+  <title>StockFlow Pro | Gestión Inteligente de Inventario & Suscripción SaaS</title>
   <meta name="description"
-    content="Plataforma SaaS moderna para el control de inventario, valoración financiera de stock y analítica de productos en tiempo real.">
+    content="Plataforma SaaS moderna para el control de inventario inteligente, analítica financiera de stock y planes Pro por suscripción.">
 
   <!-- Tipografías de Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,258 @@
 </head>
 
 <body class="theme-dark">
+
+  <!-- ============================================================== -->
+  <!-- PANTALLA DE ACCESO & AUTENTICACIÓN (STOCKFLOW PRO GATEWAY)     -->
+  <!-- ============================================================== -->
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-ambient-glow auth-glow-1"></div>
+    <div class="auth-ambient-glow auth-glow-2"></div>
+
+    <div class="auth-container">
+      <!-- Columna Izquierda: Presentación y Beneficios Pro -->
+      <div class="auth-hero-panel">
+        <div class="auth-brand-lockup">
+          <div class="brand-icon-wrapper" aria-hidden="true">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span class="brand-sparkle"></span>
+          </div>
+          <div class="auth-brand-text">
+            <h2>Stock<span class="brand-accent">Flow</span> <span class="brand-badge-pro">PRO</span></h2>
+            <span class="auth-tag">Enterprise Inventory & Analytics</span>
+          </div>
+        </div>
+
+        <div class="auth-hero-content">
+          <h1 class="auth-hero-title">Gestión de Inventario de Nueva Generación</h1>
+          <p class="auth-hero-desc">
+            Optimiza el control de tus existencias, evalúa métricas financieras en tiempo real y accede al soporte técnico prioritario 24/7.
+          </p>
+
+          <div class="auth-perks-list">
+            <div class="auth-perk-item">
+              <div class="perk-icon">🎁</div>
+              <div>
+                <strong>Prueba Gratuita de 30 Días</strong>
+                <span>Crea tu cuenta gratis hoy mismo sin ingresar tarjeta de crédito.</span>
+              </div>
+            </div>
+            <div class="auth-perk-item">
+              <div class="perk-icon">👑</div>
+              <div>
+                <strong>Plan StockFlow Pro por solo $5.99 / mes</strong>
+                <span>Inventario ilimitado, analítica avanzada y trazabilidad total.</span>
+              </div>
+            </div>
+            <div class="auth-perk-item">
+              <div class="perk-icon">💬</div>
+              <div>
+                <strong>Soporte Técnico Directo</strong>
+                <span>Diagnóstico de errores, asistencia por WhatsApp y correo electrónico.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-hero-footer">
+          <div class="auth-trust-badge">
+            <span class="trust-stars">★★★★★</span>
+            <span>Plataforma SaaS de demostración académica</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Tarjeta de Formularios (Login / Registro / Recuperación) -->
+      <div class="auth-form-panel">
+        <div class="auth-nav-tabs">
+          <button class="auth-tab-btn active" id="tab-btn-login" data-target="panel-login">Iniciar Sesión</button>
+          <button class="auth-tab-btn" id="tab-btn-register" data-target="panel-register">Crear Cuenta (30d Gratis)</button>
+        </div>
+
+        <!-- Panel 1: Iniciar Sesión -->
+        <div class="auth-panel-form active" id="panel-login">
+          <div class="auth-form-header">
+            <h3>Bienvenido de nuevo</h3>
+            <p>Ingresa tus credenciales para acceder a tu panel de inventario.</p>
+          </div>
+
+          <form id="form-login" novalidate>
+            <div class="form-group">
+              <label for="login-email" class="form-label">Correo Electrónico</label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" id="login-email" class="form-control pl-icon" placeholder="admin@stockflow.dev" value="admin@stockflow.dev" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row">
+                <label for="login-password" class="form-label">Contraseña</label>
+                <button type="button" class="btn-text-link" id="btn-show-recovery">¿Olvidaste tu contraseña?</button>
+              </div>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <input type="password" id="login-password" class="form-control pl-icon" placeholder="••••••••" value="admin123" required>
+              </div>
+            </div>
+
+            <div class="auth-remember-row">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" id="login-remember" checked>
+                <span class="custom-checkbox-indicator"></span>
+                <span class="remember-text">Recordar mi sesión en este navegador</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-login">
+              <span>Iniciar Sesión en StockFlow Pro</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+            <div class="auth-divider">
+              <span>o accede al entorno demostrativo</span>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary btn-block" id="btn-demo-quick-login">
+              <span class="demo-lightning">⚡</span>
+              <span>Acceso Rápido de Demostración (Admin Pro)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Panel 2: Crear Cuenta (Registro) -->
+        <div class="auth-panel-form" id="panel-register" style="display: none;">
+          <div class="auth-form-header">
+            <div class="free-trial-banner">
+              <span class="gift-icon">🎁</span>
+              <span>Incluye <strong>30 días de prueba gratuita</strong> sin cobro</span>
+            </div>
+            <h3>Crea tu cuenta StockFlow Pro</h3>
+            <p>Comienza a gestionar tu stock de forma profesional hoy mismo.</p>
+          </div>
+
+          <form id="form-register" novalidate>
+            <div class="form-group">
+              <label for="reg-name" class="form-label">Nombre Completo <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" id="reg-name" class="form-control pl-icon" placeholder="Ej. Carlos Acereto" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email" class="form-label">Correo Electrónico <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" id="reg-email" class="form-control pl-icon" placeholder="nombre@miempresa.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-half">
+                <label for="reg-password" class="form-label">Contraseña <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <input type="password" id="reg-password" class="form-control pl-icon" placeholder="Mínimo 6 caracteres" required>
+                </div>
+              </div>
+
+              <div class="form-group col-half">
+                <label for="reg-password-confirm" class="form-label">Confirmar Contraseña <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <input type="password" id="reg-password-confirm" class="form-control pl-icon" placeholder="Repite la contraseña" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-remember-row">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" id="reg-terms" checked required>
+                <span class="custom-checkbox-indicator"></span>
+                <span class="remember-text">Acepto los términos y condiciones de la demostración académica</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-register">
+              <span>Crear Cuenta y Activar 30 Días Gratis</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Panel 3: Recuperar Contraseña -->
+        <div class="auth-panel-form" id="panel-recovery" style="display: none;">
+          <div class="auth-form-header">
+            <h3>Recuperar Contraseña</h3>
+            <p>Ingresa tu correo registrado para enviarte un enlace de restablecimiento seguro.</p>
+          </div>
+
+          <form id="form-recovery" novalidate>
+            <div class="form-group">
+              <label for="recovery-email" class="form-label">Correo Electrónico Registrado</label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" id="recovery-email" class="form-control pl-icon" placeholder="nombre@correo.com" required>
+              </div>
+            </div>
+
+            <div class="recovery-success-box" id="recovery-success-box" style="display: none;">
+              <div class="recovery-icon-circle">✓</div>
+              <div>
+                <strong>¡Enlace de recuperación enviado!</strong>
+                <p>Para fines de esta demostración académica, tu contraseña temporal es <code>StockFlow2026!</code>.</p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-recovery">
+              <span>Enviar Instrucciones de Recuperación</span>
+            </button>
+
+            <button type="button" class="btn btn-ghost btn-block" id="btn-back-to-login">
+              <span>← Volver a Iniciar Sesión</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Layout Principal de la Aplicación SaaS -->
-  <div class="app-layout">
+  <div class="app-layout" id="app-layout">
 
     <!-- Backdrop para dispositivos móviles al abrir el sidebar -->
     <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
@@ -42,7 +292,7 @@
             <span class="brand-sparkle"></span>
           </div>
           <div class="brand-info">
-            <div class="brand-title">Stock<span class="brand-accent">Flow</span></div>
+            <div class="brand-title">Stock<span class="brand-accent">Flow</span> <span class="brand-badge-pro">PRO</span></div>
             <span class="brand-tag">SaaS Enterprise</span>
           </div>
         </a>
@@ -136,6 +386,20 @@
             </a>
           </li>
         </ul>
+
+        <div class="nav-section-label">ASISTENCIA & AYUDA</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" id="nav-soporte" data-section="soporte">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+              <span class="nav-text">Soporte Técnico</span>
+              <span class="nav-pill-badge badge-support-live" id="nav-support-badge">24/7</span>
+            </button>
+          </li>
+        </ul>
       </nav>
 
       <!-- Pie de Barra Lateral: Estado y Perfil -->
@@ -150,11 +414,11 @@
             <span class="status-subtitle" id="server-ping-text">Conectado (Puerto 8000)</span>
           </div>
         </div>
-        <div class="user-profile-badge">
-          <div class="user-avatar-initials">AD</div>
+        <div class="user-profile-badge" id="sidebar-user-profile-badge" style="cursor: pointer;" title="Gestionar mi perfil y suscripción">
+          <div class="user-avatar-initials" id="sidebar-user-avatar">AD</div>
           <div class="user-details">
-            <span class="user-name">Admin Inventario</span>
-            <span class="user-role">Superusuario</span>
+            <span class="user-name" id="sidebar-user-name">Admin Inventario</span>
+            <span class="user-role" id="sidebar-user-role-plan"><span class="badge-sub-dot"></span> Prueba (30d)</span>
           </div>
         </div>
       </div>
@@ -194,6 +458,22 @@
         </div>
 
         <div class="top-header-actions">
+          <!-- Píldora de Suscripción en Header -->
+          <div class="header-subscription-pill" id="header-subscription-pill" title="Plan actual: Prueba Gratuita 30 días">
+            <div class="sub-pill-crown">👑</div>
+            <div class="sub-pill-meta">
+              <div class="sub-pill-title-row">
+                <span class="sub-pill-title" id="header-sub-plan-name">Prueba Gratuita</span>
+                <span class="sub-pill-badge-trial" id="header-sub-plan-badge">30 días</span>
+              </div>
+              <span class="sub-pill-subtext" id="header-sub-plan-price">$0.00 / mes</span>
+            </div>
+            <button type="button" class="btn btn-xs btn-gold-upgrade" id="btn-header-upgrade-pro" title="Mejorar a StockFlow Pro por $5.99/mes">
+              <span>Mejorar a Pro</span>
+              <span class="upgrade-price-tag">$5.99</span>
+            </button>
+          </div>
+
           <!-- Valor de Inventario Flotante -->
           <div class="inventory-quick-stat" id="header-inventory-value-pill" title="Valor total del inventario">
             <span class="quick-stat-label">Valor Activo:</span>
@@ -222,6 +502,16 @@
             </div>
           </div>
 
+          <!-- Botón de Acceso Rápido a Soporte Técnico -->
+          <button class="icon-button" id="btn-header-support" aria-label="Abrir centro de soporte"
+            title="Soporte Técnico & Diagnóstico (WhatsApp y Correo)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+            <span class="support-status-dot" title="Soporte Online"></span>
+          </button>
+
           <!-- Botón Acción Primaria Global: Nuevo Producto -->
           <button class="btn btn-primary btn-header-cta" id="btn-abrir-crear" aria-label="Crear nuevo producto">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-icon">
@@ -236,12 +526,12 @@
             <button class="user-profile-btn" id="btn-user-profile" aria-expanded="false" aria-haspopup="true"
               aria-label="Menú de perfil de usuario">
               <div class="user-avatar-circle" aria-hidden="true">
-                <span class="avatar-initials">AD</span>
+                <span class="avatar-initials" id="topbar-avatar-initials">AD</span>
                 <span class="avatar-status-dot" title="Estado: Conectado"></span>
               </div>
               <div class="user-profile-info">
-                <span class="user-profile-name">Admin Inventario</span>
-                <span class="user-profile-role">Administrador</span>
+                <span class="user-profile-name" id="topbar-user-name">Admin Inventario</span>
+                <span class="user-profile-role" id="topbar-user-role">Administrador</span>
               </div>
               <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 width="14" height="14">
@@ -253,10 +543,10 @@
             <div class="user-dropdown-menu" id="user-dropdown-menu" role="menu" aria-label="Opciones de perfil"
               style="display: none;">
               <div class="dropdown-user-header">
-                <div class="dropdown-user-avatar">AD</div>
+                <div class="dropdown-user-avatar" id="dropdown-user-avatar">AD</div>
                 <div class="dropdown-user-meta">
-                  <strong class="dropdown-user-name">Admin Inventario</strong>
-                  <span class="dropdown-user-email">admin@stockflow.dev</span>
+                  <strong class="dropdown-user-name" id="dropdown-user-name">Admin Inventario</strong>
+                  <span class="dropdown-user-email" id="dropdown-user-email">admin@stockflow.dev</span>
                   <span class="dropdown-user-role-badge">
                     <span class="badge-role-dot"></span> Administrador
                   </span>
@@ -270,20 +560,17 @@
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                       <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    <span class="menu-item-text">Mi Perfil</span>
-                    <span class="demo-tag">Demo</span>
+                    <span class="menu-item-text">Mi Perfil y Suscripción</span>
+                    <span class="demo-tag plan-tag-pill" id="dropdown-plan-badge">Prueba 30d</span>
                   </button>
                 </li>
                 <li>
-                  <button class="dropdown-menu-item" id="menu-item-settings" role="menuitem">
+                  <button class="dropdown-menu-item" id="menu-item-planes" role="menuitem">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
-                      <circle cx="12" cy="12" r="3"></circle>
-                      <path
-                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                      </path>
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                     </svg>
-                    <span class="menu-item-text">Configuración</span>
-                    <span class="demo-tag">Demo</span>
+                    <span class="menu-item-text">Planes & StockFlow Pro ($5.99)</span>
+                    <span class="badge-gold-pro">PRO</span>
                   </button>
                 </li>
                 <li>
@@ -300,6 +587,16 @@
                       <line x1="10" y1="14" x2="21" y2="3"></line>
                     </svg>
                   </a>
+                </li>
+                <li>
+                  <button class="dropdown-menu-item" id="menu-item-support" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-item-icon">
+                      <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                    </svg>
+                    <span class="menu-item-text">Centro de Soporte</span>
+                    <span class="demo-tag" style="background: rgba(16, 185, 129, 0.16); color: #34D399;">Online</span>
+                  </button>
                 </li>
               </ul>
               <div class="dropdown-divider"></div>
@@ -1017,6 +1314,466 @@
           </div>
         </section>
 
+        <!-- ============================================================== -->
+        <!-- SECCIÓN 6: CENTRO DE SOPORTE TÉCNICO & CONSULTA DE ERRORES     -->
+        <!-- ============================================================== -->
+        <section class="spa-view" id="view-soporte" aria-label="Centro de Soporte Técnico y Diagnóstico">
+          <header class="section-page-header">
+            <div class="header-titles">
+              <div class="badge-header-inline">
+                <span class="badge-dot pulse"></span>
+                <span>Asistencia Técnica & Monitoreo en Vivo</span>
+              </div>
+              <h2 class="page-title">Centro de Soporte Técnico & Diagnóstico</h2>
+              <p class="page-subtitle">
+                Consulta y reporta problemas o errores de la plataforma, verifica la estabilidad de la web y comunícate de inmediato vía WhatsApp o correo electrónico.
+              </p>
+            </div>
+            <div class="header-actions-group">
+              <button class="btn btn-secondary btn-sm" id="btn-abrir-config-soporte" title="Personalizar número de WhatsApp y correo de soporte">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="btn-icon">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span>Configurar Contactos</span>
+              </button>
+              <button class="btn btn-primary btn-sm" id="btn-ejecutar-diagnostico-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" class="btn-icon">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span>Ejecutar Diagnóstico</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- Tarjetas Principales de Canales de Atención Directa -->
+          <div class="support-channels-grid">
+            <!-- Canal WhatsApp -->
+            <div class="support-channel-card card-whatsapp">
+              <div class="channel-card-glow"></div>
+              <div class="channel-card-top">
+                <div class="channel-icon-wrap icon-whatsapp">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                </div>
+                <div class="channel-meta-badge badge-whatsapp">
+                  <span class="badge-dot pulse-emerald"></span>
+                  <span>Canal Directo Activo</span>
+                </div>
+              </div>
+              <div class="channel-card-body">
+                <h3 class="channel-card-title">Soporte Inmediato vía WhatsApp</h3>
+                <p class="channel-card-desc">
+                  Chatea directamente con nuestro equipo técnico para reportar fallos, resolver dudas operativas o consultar errores en tiempo real.
+                </p>
+                <div class="channel-contact-box">
+                  <span class="contact-box-label">Número de WhatsApp:</span>
+                  <div class="contact-box-value">
+                    <span class="contact-phone-number" id="soporte-whatsapp-numero-text">+52 55 1234 5678</span>
+                    <button class="btn-copy-mini" id="btn-copiar-whatsapp" title="Copiar número de teléfono">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="channel-card-footer">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block" id="btn-abrir-whatsapp">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" class="btn-icon">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                  <span>Chatear por WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Canal Correo Electrónico -->
+            <div class="support-channel-card card-email">
+              <div class="channel-card-glow"></div>
+              <div class="channel-card-top">
+                <div class="channel-icon-wrap icon-email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-meta-badge badge-email">
+                  <span>Atención Formal</span>
+                </div>
+              </div>
+              <div class="channel-card-body">
+                <h3 class="channel-card-title">Mesa de Ayuda por Correo</h3>
+                <p class="channel-card-desc">
+                  Envía reportes detallados, capturas de pantalla, archivos de base de datos o requerimientos técnicos de la plataforma.
+                </p>
+                <div class="channel-contact-box">
+                  <span class="contact-box-label">Buzón de Asistencia:</span>
+                  <div class="contact-box-value">
+                    <span class="contact-email-address" id="soporte-email-text">soporte@stockflow.dev</span>
+                    <button class="btn-copy-mini" id="btn-copiar-email" title="Copiar correo de soporte">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="channel-card-footer">
+                <a href="#" class="btn btn-secondary btn-block" id="btn-abrir-email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" class="btn-icon">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span>Redactar Correo a Soporte</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Resumen de Salud del Sistema -->
+            <div class="support-channel-card card-health">
+              <div class="channel-card-glow"></div>
+              <div class="channel-card-top">
+                <div class="channel-icon-wrap icon-health">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-meta-badge badge-health" id="badge-system-health-status">
+                  <span class="badge-dot pulse-emerald"></span>
+                  <span id="badge-system-health-text">Sistema Operativo</span>
+                </div>
+              </div>
+              <div class="channel-card-body">
+                <h3 class="channel-card-title">Monitor de Salud Técnica</h3>
+                <p class="channel-card-desc">
+                  Monitoreo de latencia en vivo con el backend FastAPI, disponibilidad de SQLite y registro de incidencias del cliente.
+                </p>
+                <div class="health-kpi-row">
+                  <div class="health-kpi-item">
+                    <span class="kpi-label">Latencia API</span>
+                    <span class="kpi-val text-emerald" id="health-api-latency">-- ms</span>
+                  </div>
+                  <div class="health-kpi-divider"></div>
+                  <div class="health-kpi-item">
+                    <span class="kpi-label">Base SQLite</span>
+                    <span class="kpi-val text-emerald" id="health-db-status">Conectada</span>
+                  </div>
+                  <div class="health-kpi-divider"></div>
+                  <div class="health-kpi-item">
+                    <span class="kpi-label">Errores Sesión</span>
+                    <span class="kpi-val" id="health-errors-count">0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="channel-card-footer">
+                <button class="btn btn-outline-cyan btn-block" id="btn-ejecutar-test-rapido">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" class="btn-icon">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  <span id="btn-test-text">Probar Conectividad</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consola de Diagnóstico & Registro de Errores -->
+          <div class="support-console-wrapper">
+            <div class="analytics-card support-console-card">
+              <div class="console-card-header">
+                <div class="console-header-info">
+                  <div class="console-title-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="console-icon">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    <h3 class="card-title-clean">Registro de Errores & Diagnóstico de la Web</h3>
+                  </div>
+                  <p class="card-subtitle-clean">
+                    Esta consola detecta automáticamente fallos en la web (errores de red, respuestas HTTP 4xx/5xx y excepciones de script) para que puedas consultarlos o reportarlos directamente al soporte.
+                  </p>
+                </div>
+                <div class="console-actions">
+                  <button class="btn btn-outline-secondary btn-sm" id="btn-simular-error" title="Genera un error simulado para comprobar cómo se registra y cómo consultarlo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="btn-icon">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span>Simular Error de Prueba</span>
+                  </button>
+                  <button class="btn btn-outline-secondary btn-sm" id="btn-limpiar-registro-errores" title="Vaciar la lista de errores capturados">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="btn-icon">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    <span>Limpiar Registro</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Checklist de Componentes del Sistema -->
+              <div class="system-checklist-grid">
+                <div class="check-item-box" id="check-api">
+                  <div class="check-icon-circle check-success" id="check-api-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="check-info">
+                    <span class="check-title">Servidor Backend FastAPI</span>
+                    <span class="check-desc" id="check-api-desc">Escuchando en http://127.0.0.1:8000</span>
+                  </div>
+                </div>
+
+                <div class="check-item-box" id="check-db">
+                  <div class="check-icon-circle check-success" id="check-db-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="check-info">
+                    <span class="check-title">Base de Datos SQLite</span>
+                    <span class="check-desc" id="check-db-desc">stockflow.db activa</span>
+                  </div>
+                </div>
+
+                <div class="check-item-box" id="check-network">
+                  <div class="check-icon-circle check-success" id="check-network-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="check-info">
+                    <span class="check-title">Conectividad del Navegador</span>
+                    <span class="check-desc" id="check-network-desc">En línea (Online)</span>
+                  </div>
+                </div>
+
+                <div class="check-item-box" id="check-storage">
+                  <div class="check-icon-circle check-success" id="check-storage-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="check-info">
+                    <span class="check-title">Almacenamiento Local</span>
+                    <span class="check-desc" id="check-storage-desc">LocalStorage funcional</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contenedor del Feed de Errores -->
+              <div class="error-log-container">
+                <div class="error-log-top-bar">
+                  <div class="log-top-title">
+                    <span>Incidencias & Eventos Registrados</span>
+                    <span class="badge badge-stock" id="badge-total-errores-log">0 eventos</span>
+                  </div>
+                  <div class="log-filter-chips">
+                    <button class="log-chip active" data-filter="todos">Todos</button>
+                    <button class="log-chip" data-filter="red">Red / API</button>
+                    <button class="log-chip" data-filter="validacion">Validación</button>
+                    <button class="log-chip" data-filter="excepcion">Excepciones</button>
+                  </div>
+                </div>
+
+                <!-- Lista de Errores Registrados -->
+                <div class="error-log-list" id="error-log-list">
+                  <!-- Estado Vacío cuando no hay errores -->
+                  <div class="error-log-empty" id="error-log-empty">
+                    <div class="empty-shield-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                      </svg>
+                    </div>
+                    <h4 class="empty-title">Sin errores ni caídas registradas</h4>
+                    <p class="empty-desc">
+                      La aplicación no ha detectado fallos en esta sesión. Todo el tráfico hacia la API y la interfaz está funcionando con normalidad. Si deseas verificar cómo se reporta una falla, pulsa el botón "Simular Error de Prueba".
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario para Redactar Consulta o Reporte Técnico -->
+          <div class="support-ticket-section">
+            <div class="analytics-card">
+              <div class="ticket-header">
+                <div class="ticket-header-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title-clean">Generar Consulta o Reporte de Incidencia</h3>
+                  <p class="card-subtitle-clean">
+                    Describe cualquier problema o consulta técnica. El reporte se estructurará automáticamente con los datos del sistema para que lo envíes en 1 clic por WhatsApp o correo.
+                  </p>
+                </div>
+              </div>
+
+              <form id="form-soporte-ticket" class="ticket-form" novalidate>
+                <div class="form-row">
+                  <div class="form-group col-half">
+                    <label for="ticket-tipo" class="form-label">
+                      Tipo de Problema o Consulta <span class="required">*</span>
+                    </label>
+                    <select id="ticket-tipo" class="form-control" required>
+                      <option value="Error de comunicación con la API REST">Error de comunicación con la API REST (Fallo de servidor / 500)</option>
+                      <option value="Error al crear o editar un producto">Error de validación al crear o editar un producto</option>
+                      <option value="Problema en cálculo de stock o métricas">Discrepancia en cálculo de stock o movimientos</option>
+                      <option value="Lentitud o bloqueo visual en la web">Lentitud de carga o problema de visualización</option>
+                      <option value="Consulta operativa o requerimiento técnico">Consulta general sobre el sistema / Nueva función</option>
+                      <option value="Otro problema no listado">Otro problema o incidencia</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-half">
+                    <label for="ticket-urgencia" class="form-label">
+                      Nivel de Urgencia
+                    </label>
+                    <select id="ticket-urgencia" class="form-control">
+                      <option value="Normal">🟡 Normal - Consulta o problema no bloqueante</option>
+                      <option value="Alta">🟠 Alta - Función afectada pero la web responde</option>
+                      <option value="Crítica">🔴 Crítica - Sistema bloqueado o caída total</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="ticket-descripcion" class="form-label">
+                    Descripción del Problema o Error <span class="required">*</span>
+                  </label>
+                  <textarea id="ticket-descripcion" class="form-control ticket-textarea" rows="4"
+                    placeholder="Describe qué estabas haciendo cuando ocurrió el problema (ej: 'Intenté guardar un producto con precio $15.50 pero me mostró error de servidor...')" required></textarea>
+                  <div class="field-meta-row">
+                    <span class="field-error" id="error-ticket-desc" aria-live="polite"></span>
+                    <span class="char-count" id="char-count-ticket">0 caracteres</span>
+                  </div>
+                </div>
+
+                <div class="form-checkbox-group">
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="ticket-incluir-diagnostico" checked>
+                    <span class="custom-checkbox-indicator"></span>
+                    <span class="checkbox-text-wrap">
+                      <strong>Incluir telemetría técnica automática</strong>
+                      <span class="checkbox-subtext">Adjunta versión de navegador, resolución, estado de la base de datos, latencia de la API y el último error capturado en el reporte.</span>
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Botones de Acción de Envío -->
+                <div class="ticket-action-buttons">
+                  <button type="button" class="btn btn-whatsapp" id="btn-enviar-ticket-whatsapp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" class="btn-icon">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    <span>Enviar Consulta por WhatsApp</span>
+                  </button>
+
+                  <button type="button" class="btn btn-secondary" id="btn-enviar-ticket-email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" class="btn-icon">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Enviar Consulta por Correo</span>
+                  </button>
+
+                  <button type="button" class="btn btn-ghost" id="btn-copiar-ticket-completo" title="Copiar informe completo al portapapeles">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="btn-icon">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span>Copiar Reporte</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Base de Conocimiento y Preguntas Frecuentes -->
+          <div class="support-faq-section">
+            <div class="analytics-card">
+              <div class="faq-card-header">
+                <div class="faq-title-wrap">
+                  <h3 class="card-title-clean">Soluciones Rápidas & Preguntas Frecuentes</h3>
+                  <p class="card-subtitle-clean">Respuestas inmediatas a los problemas y dudas técnicas más recurrentes.</p>
+                </div>
+                <div class="faq-search-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="faq-search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="faq-search-input" placeholder="Buscar solución..." aria-label="Buscar en preguntas frecuentes">
+                </div>
+              </div>
+
+              <div class="faq-accordion-list" id="faq-accordion-list">
+                <!-- Item 1 -->
+                <div class="faq-item" data-keywords="error comunicacion api rest backend uvicorn puerto 8000 conexion caida">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span>¿Qué hacer si aparece "Error de comunicación con la API REST"?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Este mensaje aparece cuando el navegador no puede contactar con el backend FastAPI en <code>http://127.0.0.1:8000</code>. Para solucionarlo:</p>
+                    <ol>
+                      <li>Asegúrate de que la terminal del servidor Python esté abierta y ejecutando: <br><code>.\.venv\Scripts\uvicorn app.main:app --reload --port 8000</code></li>
+                      <li>Verifica que otra aplicación no esté ocupando el puerto 8000.</li>
+                      <li>Pulsa el botón <strong>"Reintentar"</strong> en el banner rojo o ejecuta el test de conectividad en este módulo.</li>
+                    </ol>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item" data-keywords="precio cero negativo validacion pydantic guardar producto error 422">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span>¿Por qué no me deja guardar un producto con precio $0 o negativo?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Por regla financiera de la plataforma validada con <strong>Pydantic v2</strong>, el precio debe ser un número estrictamente mayor que cero (ej. <code>$0.01</code> o superior). El stock tampoco puede ser negativo. Si los valores no cumplen con esta regla, el sistema retornará un error HTTP 422 para salvaguardar la coherencia contable.</p>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item" data-keywords="base de datos sqlite stockflow.db reiniciar restaurar reiniciar datos">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span>¿Dónde se guardan los datos y cómo puedo respaldar o reiniciar la base de datos?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Todos los productos y transacciones se guardan en el archivo local <code>stockflow.db</code> en la raíz del proyecto. Para respaldarlo, simplemente haz una copia de ese archivo. Si deseas reiniciar la base de datos con los productos de demostración iniciales, puedes detener el servidor, borrar <code>stockflow.db</code> y al volver a iniciar, el ciclo de vida (lifespan) sembrará automáticamente los 5 productos base.</p>
+                  </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item" data-keywords="whatsapp correo cambiar numero telefono soporte configurar personalizar">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span>¿Cómo cambio el número de WhatsApp y correo de soporte asignados?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Haz clic en el botón superior <strong>"Configurar Contactos"</strong> en esta sección. Puedes ingresar tu número internacional de WhatsApp (con prefijo de país, por ejemplo <code>+52 1 234 567 8900</code>) y el correo electrónico de tu equipo técnico. La configuración se guarda al instante en tu navegador.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <!-- Botón Móvil Inferior Flotante -->
@@ -1292,6 +2049,538 @@
       </div>
     </div>
   </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CONFIGURAR CONTACTOS DE SOPORTE TÉCNICO                 -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-config-soporte" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-config-soporte-titulo">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <div class="modal-header-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-config-soporte-titulo">Configurar Contactos de Soporte</h2>
+          <span class="modal-subtitle">Personaliza los canales de atención por WhatsApp y correo.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-config-soporte" aria-label="Cerrar ventana emergente">&times;</button>
+      </div>
+
+      <form id="form-config-soporte" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="cfg-whatsapp-numero" class="form-label">
+              Número de WhatsApp para Soporte <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <input type="text" id="cfg-whatsapp-numero" class="form-control pl-icon" placeholder="Ej. +52 55 1234 5678" required>
+            </div>
+            <span class="field-meta-info">Incluye el código de país (ej. +52 México, +34 España, +1 USA, +57 Colombia).</span>
+          </div>
+
+          <div class="form-group">
+            <label for="cfg-email-soporte" class="form-label">
+              Correo Electrónico de Soporte <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input type="email" id="cfg-email-soporte" class="form-control pl-icon" placeholder="soporte@miempresa.com" required>
+            </div>
+            <span class="field-meta-info">Dirección donde se dirigirán las consultas vía email.</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-config-soporte">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-guardar-config-soporte">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: COMPARATIVA DE PLANES & STOCKFLOW PRO ($5.99/MES)       -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-planes-suscripcion" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-planes-titulo">
+    <div class="modal-dialog modal-dialog-lg modal-dialog-pricing">
+      <div class="modal-header">
+        <div class="modal-header-icon-box gold-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-planes-titulo">Planes de Suscripción StockFlow</h2>
+          <span class="modal-subtitle">Escala la administración de tu inventario con herramientas avanzadas para tu negocio.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-planes" aria-label="Cerrar ventana de planes">&times;</button>
+      </div>
+
+      <div class="modal-body modal-body-pricing">
+        <div class="pricing-grid">
+          <!-- Tarjeta 1: Plan Prueba Gratuita -->
+          <div class="pricing-card card-free" id="card-plan-free">
+            <div class="pricing-card-header">
+              <span class="pricing-badge-current" id="badge-current-free">PLAN ACTUAL</span>
+              <h3 class="plan-name">Prueba Gratuita</h3>
+              <p class="plan-desc">Diseñado para conocer la plataforma y explorar el control de stock.</p>
+              <div class="plan-price-wrap">
+                <span class="plan-currency">$</span>
+                <span class="plan-amount">0</span>
+                <span class="plan-period">/ 30 días</span>
+              </div>
+              <span class="plan-trial-note">Sin cargo ni ingreso de tarjeta de crédito</span>
+            </div>
+
+            <div class="pricing-features-list">
+              <div class="feature-item">
+                <span class="feat-check">✓</span>
+                <span>Registro, edición y eliminación de productos</span>
+              </div>
+              <div class="feature-item">
+                <span class="feat-check">✓</span>
+                <span>Ajuste rápido de existencias y alertas de stock</span>
+              </div>
+              <div class="feature-item">
+                <span class="feat-check">✓</span>
+                <span>Acceso completo durante 30 días de prueba</span>
+              </div>
+              <div class="feature-item feature-muted">
+                <span class="feat-cross">✕</span>
+                <span>Analítica financiera de margen en tiempo real</span>
+              </div>
+              <div class="feature-item feature-muted">
+                <span class="feat-cross">✕</span>
+                <span>Soporte prioritario 24/7 y SLA garantizado</span>
+              </div>
+            </div>
+
+            <div class="pricing-card-action">
+              <button type="button" class="btn btn-outline-secondary btn-block" id="btn-select-plan-free" disabled>
+                Tu Plan Inicial (30 Días)
+              </button>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Plan StockFlow Pro (Destacado) -->
+          <div class="pricing-card card-pro featured-pro" id="card-plan-pro">
+            <div class="pricing-popular-ribbon">⭐ MÁS POPULAR</div>
+            <div class="pricing-card-header">
+              <div class="plan-title-row">
+                <h3 class="plan-name">StockFlow <span class="brand-badge-pro">PRO</span></h3>
+                <span class="pricing-badge-pro-glow">Recomendado</span>
+              </div>
+              <p class="plan-desc">Control integral, analítica predictiva y soporte técnico especializado.</p>
+              <div class="plan-price-wrap">
+                <span class="plan-currency">$</span>
+                <span class="plan-amount">5.99</span>
+                <span class="plan-period">/ mes</span>
+              </div>
+              <span class="plan-trial-note gold-note">Cancela en cualquier momento · Simulación académica</span>
+            </div>
+
+            <div class="pricing-features-list">
+              <div class="feature-item feat-pro-highlight">
+                <span class="feat-check feat-gold">★</span>
+                <span><strong>Inventario Ilimitado:</strong> Sin tope de productos ni categorías</span>
+              </div>
+              <div class="feature-item feat-pro-highlight">
+                <span class="feat-check feat-gold">★</span>
+                <span><strong>Métricas Financieras:</strong> Valoración, márgenes y rotación</span>
+              </div>
+              <div class="feature-item feat-pro-highlight">
+                <span class="feat-check feat-gold">★</span>
+                <span><strong>Diagnóstico en Tiempo Real:</strong> Chequeo de API y base de datos</span>
+              </div>
+              <div class="feature-item feat-pro-highlight">
+                <span class="feat-check feat-gold">★</span>
+                <span><strong>Soporte Prioritario 24/7:</strong> Asistencia directa WhatsApp y Email</span>
+              </div>
+              <div class="feature-item feat-pro-highlight">
+                <span class="feat-check feat-gold">★</span>
+                <span><strong>Historial Completo:</strong> Trazabilidad total de movimientos de stock</span>
+              </div>
+            </div>
+
+            <div class="pricing-card-action">
+              <button type="button" class="btn btn-primary btn-block btn-lg btn-glow-gold" id="btn-abrir-checkout">
+                <span>Obtener StockFlow Pro por $5.99/mes</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer modal-footer-pricing">
+        <div class="academic-note-badge">
+          <span>🎓 Proyecto escolar: El plan Pro se activa de forma simulada para demostrar la experiencia de usuario.</span>
+        </div>
+        <button type="button" class="btn btn-secondary" id="btn-cerrar-planes-footer">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: PASARELA DE PAGO SIMULADA (TARJETA / PAYPAL)            -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-pago-simulado" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-pago-titulo">
+    <div class="modal-dialog modal-dialog-md">
+      <div class="modal-header">
+        <div class="modal-header-icon-box gold-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-pago-titulo">Suscripción StockFlow Pro</h2>
+          <span class="modal-subtitle">Pasarela de pago simulada para demostración escolar.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-pago" aria-label="Cerrar pasarela de pago">&times;</button>
+      </div>
+
+      <form id="form-pago-simulado" novalidate>
+        <div class="modal-body">
+          <!-- Banner de Demostración Académica -->
+          <div class="payment-demo-banner">
+            <span class="demo-banner-icon">🛡️</span>
+            <div>
+              <strong>Demostración Académica Segura</strong>
+              <p>No se procesa ningún cobro bancario real. No ingreses datos bancarios verdaderos.</p>
+            </div>
+          </div>
+
+          <!-- Resumen del Plan a Pagar -->
+          <div class="payment-order-summary">
+            <div class="order-summary-row">
+              <div class="order-plan-info">
+                <strong>Plan StockFlow Pro</strong>
+                <span>Facturación mensual simulada · Cancela cuando quieras</span>
+              </div>
+              <div class="order-plan-price">
+                <span class="order-amount">$5.99</span>
+                <span class="order-freq">USD / mes</span>
+              </div>
+            </div>
+            <div class="order-summary-features">
+              <span>✓ Acceso Ilimitado</span>
+              <span>✓ Analítica Pro</span>
+              <span>✓ Soporte 24/7</span>
+            </div>
+          </div>
+
+          <!-- Selector de Método de Pago Visual -->
+          <div class="form-group">
+            <label class="form-label">Selecciona el Método de Pago Visual</label>
+            <div class="payment-methods-selector" role="radiogroup" aria-label="Métodos de pago">
+              <label class="payment-method-card active" id="method-credit-card">
+                <input type="radio" name="payment_method" value="credit" checked>
+                <div class="method-card-content">
+                  <div class="method-top">
+                    <span class="method-title">Tarjeta de Crédito</span>
+                    <span class="method-badges">
+                      <span class="card-chip">VISA</span>
+                      <span class="card-chip">MC</span>
+                    </span>
+                  </div>
+                  <span class="method-desc">Visa, Mastercard, Amex</span>
+                </div>
+              </label>
+
+              <label class="payment-method-card" id="method-debit-card">
+                <input type="radio" name="payment_method" value="debit">
+                <div class="method-card-content">
+                  <div class="method-top">
+                    <span class="method-title">Tarjeta de Débito</span>
+                    <span class="method-badges">
+                      <span class="card-chip">Red</span>
+                    </span>
+                  </div>
+                  <span class="method-desc">Cuentas de débito bancarias</span>
+                </div>
+              </label>
+
+              <label class="payment-method-card" id="method-paypal">
+                <input type="radio" name="payment_method" value="paypal">
+                <div class="method-card-content">
+                  <div class="method-top">
+                    <span class="method-title">PayPal</span>
+                    <span class="method-badges">
+                      <span class="card-chip paypal-chip">PP</span>
+                    </span>
+                  </div>
+                  <span class="method-desc">Pago rápido simulado</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Campos para Tarjeta (Crédito y Débito) -->
+          <div class="payment-fields-card" id="fields-card-payment">
+            <div class="form-group">
+              <div class="form-label-row">
+                <label for="card-number" class="form-label">Número de Tarjeta <span class="required">*</span></label>
+                <button type="button" class="btn-text-link" id="btn-autollenar-tarjeta">
+                  ⚡ Autollenar tarjeta de prueba
+                </button>
+              </div>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                  <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <input type="text" id="card-number" class="form-control pl-icon" placeholder="4242 •••• •••• 4242"
+                  maxlength="19" value="4242 4242 4242 4242" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="card-holder" class="form-label">Nombre del Titular <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" id="card-holder" class="form-control pl-icon" placeholder="Ej. Carlos Acereto"
+                  value="Carlos Acereto" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-half">
+                <label for="card-expiry" class="form-label">Expiración (MM/AA) <span class="required">*</span></label>
+                <input type="text" id="card-expiry" class="form-control" placeholder="12/28" maxlength="5"
+                  value="12/28" required>
+              </div>
+              <div class="form-group col-half">
+                <label for="card-cvv" class="form-label">Código CVC / CVV <span class="required">*</span></label>
+                <input type="password" id="card-cvv" class="form-control" placeholder="123" maxlength="4"
+                  value="123" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campos para PayPal (Alternativo) -->
+          <div class="payment-fields-paypal" id="fields-paypal-payment" style="display: none;">
+            <div class="form-group">
+              <label for="paypal-email" class="form-label">Correo de Cuenta PayPal <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" id="paypal-email" class="form-control pl-icon" placeholder="usuario@paypal.com"
+                  value="estudiante@demo.paypal.com">
+              </div>
+              <span class="field-meta-info">Se simulará una autorización directa sin redirección externa.</span>
+            </div>
+          </div>
+
+          <div class="payment-secure-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Conexión simulada con cifrado SSL 256-bit (Demostración)</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-pago">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-glow-gold" id="btn-confirmar-pago">
+            <span class="btn-text">Confirmar y Activar StockFlow Pro ($5.99)</span>
+            <div class="btn-spinner" id="payment-spinner" style="display: none;"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CONFIRMACIÓN Y CELEBRACIÓN DE PLAN PRO                  -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-pago-exito" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-exito-titulo">
+    <div class="modal-dialog modal-dialog-md modal-dialog-celebration">
+      <div class="celebration-content">
+        <div class="celebration-badge-burst">
+          <div class="crown-burst-glow"></div>
+          <span class="celebration-crown">👑</span>
+        </div>
+
+        <h2 class="celebration-title" id="modal-exito-titulo">
+          ¡Felicidades! Tu cuenta se ha cambiado al plan StockFlow Pro
+        </h2>
+
+        <p class="celebration-subtitle">
+          Tu suscripción simulada a <strong>StockFlow Pro ($5.99 / mes)</strong> se ha procesado con éxito. Ahora tienes acceso ilimitado a todas las funcionalidades avanzadas.
+        </p>
+
+        <div class="celebration-features-grid">
+          <div class="celebration-feature-card">
+            <span class="card-icon">⚡</span>
+            <strong>Sin Límites</strong>
+            <span>Crea todos los productos que necesites</span>
+          </div>
+          <div class="celebration-feature-card">
+            <span class="card-icon">📊</span>
+            <strong>Analítica Pro</strong>
+            <span>Reportes financieros en tiempo real</span>
+          </div>
+          <div class="celebration-feature-card">
+            <span class="card-icon">💬</span>
+            <strong>Soporte 24/7</strong>
+            <span>Canales directos por WhatsApp y Email</span>
+          </div>
+        </div>
+
+        <div class="celebration-invoice-summary">
+          <div class="invoice-item">
+            <span class="invoice-label">Plan Activo:</span>
+            <span class="invoice-val highlight-gold">StockFlow Pro</span>
+          </div>
+          <div class="invoice-item">
+            <span class="invoice-label">Monto:</span>
+            <span class="invoice-val">$5.99 USD / mes</span>
+          </div>
+          <div class="invoice-item">
+            <span class="invoice-label">Estado de la cuenta:</span>
+            <span class="invoice-val status-val-active">● Suscripción Activa</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block btn-lg btn-glow-gold" id="btn-cerrar-exito-pago">
+          <span>Ir a mi Panel StockFlow Pro</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- MODAL: PERFIL DE USUARIO Y GESTIÓN DE SUSCRIPCIÓN              -->
+  <!-- ============================================================== -->
+  <div class="modal-backdrop" id="modal-perfil-usuario" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-perfil-titulo">
+    <div class="modal-dialog modal-dialog-md">
+      <div class="modal-header">
+        <div class="modal-header-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-title" id="modal-perfil-titulo">Perfil y Suscripción</h2>
+          <span class="modal-subtitle">Consulta los datos de tu cuenta, tu plan actual y estado de servicio.</span>
+        </div>
+        <button class="btn-close" id="btn-cerrar-perfil" aria-label="Cerrar perfil de usuario">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Tarjeta de Identidad del Usuario -->
+        <div class="profile-hero-card">
+          <div class="profile-avatar-big" id="modal-profile-avatar">AD</div>
+          <div class="profile-hero-details">
+            <h3 class="profile-user-name" id="modal-profile-name">Admin Inventario</h3>
+            <span class="profile-user-email" id="modal-profile-email">admin@stockflow.dev</span>
+            <div class="profile-tag-row">
+              <span class="profile-role-tag">Superusuario</span>
+              <span class="profile-plan-tag" id="modal-profile-plan-pill">Prueba Gratuita (30d)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estado Detallado del Plan y Suscripción -->
+        <div class="profile-subscription-box">
+          <div class="sub-box-header">
+            <div class="sub-box-title">
+              <span class="crown-inline">👑</span>
+              <h4>Estado de la Suscripción</h4>
+            </div>
+            <span class="sub-status-pill" id="modal-profile-sub-badge">Prueba Activa</span>
+          </div>
+
+          <div class="sub-box-grid">
+            <div class="sub-stat-item">
+              <span class="sub-stat-label">Plan Contratado:</span>
+              <strong class="sub-stat-value" id="modal-profile-plan-name">Prueba Gratuita</strong>
+            </div>
+            <div class="sub-stat-item">
+              <span class="sub-stat-label">Costo Mensual:</span>
+              <strong class="sub-stat-value" id="modal-profile-plan-price">$0.00 / mes</strong>
+            </div>
+            <div class="sub-stat-item">
+              <span class="sub-stat-label">Vigencia / Renovación:</span>
+              <strong class="sub-stat-value" id="modal-profile-plan-expiry">30 días de prueba restantes</strong>
+            </div>
+            <div class="sub-stat-item">
+              <span class="sub-stat-label">Método de Pago:</span>
+              <strong class="sub-stat-value" id="modal-profile-payment-method">Ninguno (Periodo de gracia)</strong>
+            </div>
+          </div>
+
+          <div class="sub-box-actions">
+            <button type="button" class="btn btn-primary btn-block btn-glow-gold" id="btn-profile-upgrade-action">
+              <span>Cambiar al Plan StockFlow Pro ($5.99/mes)</span>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-block btn-sm" id="btn-profile-reset-demo"
+              title="Restablece la simulación a los 30 días de prueba gratuita para volver a probar">
+              <span>🔄 Reiniciar Simulación a Prueba Gratuita</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Acciones de Sesión -->
+        <div class="profile-session-actions">
+          <button type="button" class="btn btn-outline-danger btn-block" id="btn-modal-logout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Cerrar Sesión</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cerrar-perfil-footer">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Botón Flotante Global de Soporte Rápido -->
+  <button class="floating-support-btn" id="btn-floating-support" aria-label="Abrir centro de soporte técnico"
+    title="¿Tienes alguna duda o error? Soporte técnico 24/7">
+    <div class="floating-support-pulse"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="22" height="22">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+    <span class="floating-support-text">Soporte</span>
+  </button>
 
 
   <!-- ============================================================== -->

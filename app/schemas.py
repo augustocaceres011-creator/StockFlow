@@ -86,3 +86,18 @@ class Estadisticas(BaseModel):
     precio_minimo: float
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class DiagnosticoSistema(BaseModel):
+    """Esquema para el diagnóstico de salud técnica del sistema."""
+
+    estado: str  # "operativo"
+    servidor: str  # "FastAPI / Uvicorn"
+    version_api: str
+    version_python: str
+    base_datos: str  # "conectada"
+    total_productos: int
+    latencia_db_ms: float
+    timestamp: datetime
+
+    model_config = ConfigDict(from_attributes=True)
